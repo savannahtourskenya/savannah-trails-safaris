@@ -47,7 +47,7 @@
       font-weight: 400;
     }
 
-    /* Gallery / Destinations */
+    /* Destinations */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,68 +62,88 @@
     }
     .gallery-item img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto;
       display: block;
       border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
     .overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       color: #fff;
       padding: 15px;
       text-align: center;
     }
-    .overlay h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
     .overlay button {
-      margin-top: 10px;
-      padding: 8px 15px;
-      background: #e67e22;
-      color: #fff;
+      margin-top: 8px;
+      padding: 8px 12px;
       border: none;
       border-radius: 5px;
+      background: #e67e22;
+      color: #fff;
       cursor: pointer;
     }
     .overlay button:hover {
       background: #d35400;
     }
 
-    /* Tours */
+    /* Tours (filterable) */
     .tours {
       padding: 40px 20px;
       background: #fff;
+      text-align: center;
     }
     .tours h2 {
-      text-align: center;
       margin-bottom: 20px;
     }
-    .tour {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-left: 5px solid #2c3e50;
-      background: #f0f3f5;
-      border-radius: 5px;
+    .filter-buttons {
+      margin-bottom: 20px;
     }
-    .tour h3 {
-      margin-top: 0;
+    .filter-buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #2c3e50;
+      color: #fff;
+      cursor: pointer;
+    }
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #34495e;
+    }
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .tour-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .tour-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .tour-card .content {
+      padding: 15px;
+      text-align: left;
     }
 
     /* Blog */
     .blog {
       padding: 40px 20px;
       background: #ecf0f1;
-    }
-    .blog h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .blog p {
       text-align: center;
     }
 
@@ -133,10 +153,7 @@
       text-align: center;
       background: #fff;
     }
-    .contact h3 {
-      margin-bottom: 20px;
-    }
-    form {
+    .contact form {
       max-width: 500px;
       margin: auto;
       display: flex;
@@ -182,7 +199,7 @@
       margin-top: 20px;
     }
 
-    /* Floating WhatsApp Button */
+    /* Floating WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -190,18 +207,15 @@
       background: #25D366;
       color: #fff;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       z-index: 1000;
-    }
-    .whatsapp-float:hover {
-      background: #20b954;
     }
   </style>
 </head>
@@ -224,61 +238,61 @@
     <p>Discover Kenya’s breathtaking destinations with us.</p>
   </header>
 
-  <!-- Gallery -->
+  <!-- Destinations -->
   <section id="gallery" class="gallery">
     <div class="gallery-item">
       <img src="screenshoti_20250919-084909.jpg" alt="Amboseli">
       <div class="overlay">
-        <h3>Amboseli</h3>
+        <p>Amboseli</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara">
       <div class="overlay">
-        <h3>Maasai Mara</h3>
+        <p>Maasai Mara</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="samburumeru.jpg" alt="Samburu">
       <div class="overlay">
-        <h3>Samburu</h3>
+        <p>Samburu</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="diani.jpg" alt="Diani Beach">
       <div class="overlay">
-        <h3>Diani Beach</h3>
+        <p>Diani Beach</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="mountkenya.jpg" alt="Mt. Kenya">
       <div class="overlay">
-        <h3>Mt. Kenya</h3>
+        <p>Mt. Kenya</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="lakenakuru.jpg" alt="Lake Nakuru">
       <div class="overlay">
-        <h3>Lake Nakuru</h3>
+        <p>Lake Nakuru</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="maasaiculture.jpg" alt="Maasai Culture">
       <div class="overlay">
-        <h3>Maasai Culture</h3>
+        <p>Maasai Culture</p>
         <button>View Details</button>
       </div>
     </div>
     <div class="gallery-item">
       <img src="nairobii.jpg" alt="Nairobi">
       <div class="overlay">
-        <h3>Nairobi</h3>
+        <p>Nairobi</p>
         <button>View Details</button>
       </div>
     </div>
@@ -287,7 +301,34 @@
   <!-- Tours -->
   <section id="tours" class="tours">
     <h2>Our Tour Packages</h2>
-    <!-- keep your tour content here -->
+    <div class="filter-buttons">
+      <button class="active" onclick="filterTours('all')">All</button>
+      <button onclick="filterTours('short')">Short Safaris</button>
+      <button onclick="filterTours('long')">Extended Tours</button>
+    </div>
+    <div class="tour-grid">
+      <div class="tour-card short">
+        <img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara">
+        <div class="content">
+          <h3>3-Day Maasai Mara Safari</h3>
+          <p>Big Five, Maasai culture, scenic savannahs.</p>
+        </div>
+      </div>
+      <div class="tour-card long">
+        <img src="screenshoti_20250919-084909.jpg" alt="Amboseli">
+        <div class="content">
+          <h3>5-Day Amboseli & Tsavo Safari</h3>
+          <p>Mt. Kilimanjaro views, elephant herds, Tsavo wilderness.</p>
+        </div>
+      </div>
+      <div class="tour-card long">
+        <img src="mountkenya.jpg" alt="Kenya Explorer">
+        <div class="content">
+          <h3>7-Day Kenya Explorer</h3>
+          <p>Includes Samburu, Mt. Kenya, Lake Nakuru & Maasai Mara.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Blog -->
@@ -312,21 +353,34 @@
   <!-- Map -->
   <section id="map" class="map">
     <h3>Find Us in Nairobi, Kasarani</h3>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.871682729247!2d36.8989!3d-1.2195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f5f0d3c7cfb%3A0xa7f19a6e4db3a4f9!2sKasarani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1695132000000!5m2!1sen!2ske"
-      allowfullscreen="" loading="lazy">
-    </iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.871682729247!2d36.8989!3d-1.2195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f5f0d3c7cfb%3A0xa7f19a6e4db3a4f9!2sKasarani%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1695132000000!5m2!1sen!2ske" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© Savannah Trails Safaris | Call / WhatsApp: +254 794 653405</p>
+    <p>© Savannah Trails Safaris | WhatsApp / Call: +254 794 653405</p>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/254794653405" target="_blank" class="whatsapp-float">💬</a>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/254794653405" class="whatsapp-float" target="_blank">💬</a>
 
+  <script>
+    function filterTours(category) {
+      const cards = document.querySelectorAll('.tour-card');
+      const buttons = document.querySelectorAll('.filter-buttons button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
-  </html>
+    </html>
+        
   
 
