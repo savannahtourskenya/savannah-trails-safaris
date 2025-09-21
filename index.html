@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savannah Trails Safaris</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfdfd;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 20px;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card p {
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    footer {
+      background: #2e7d32;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Savannah Trails Safaris</h1>
+    <p>Explore Kenya, Experience Life</p>
+  </header>
+
+  <section class="gallery">
+    <div class="card">
+      <img src="assets/images/mountkenya.jpg" alt="Mt. Kenya">
+      <p>Mt. Kenya</p>
+    </div>
+    <div class="card">
+      <img src="assets/images/nairobij.jpg" alt="Nairobi">
+      <p>Nairobi</p>
+    </div>
+    <div class="card">
+      <img src="assets/images/diani.jpg" alt="Diani Beach">
+      <p>Diani Beach</p>
+    </div>
+    <div class="card">
+      <img src="assets/images/lakenakuru.jpg" alt="Lake Nakuru">
+      <p>Lake Nakuru</p>
+    </div>
+    <div class="card">
+      <img src="assets/images/maasaiculture.jpg" alt="Maasai Culture">
+      <p>Maasai Culture</p>
+    </div>
+    <div class="card">
+      <img src="assets/images/samburumeru.jpg" alt="Samburu">
+      <p>Samburu</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© Savannah Trails Safaris</p>
+  </footer>
+
+</body>
+</html>
