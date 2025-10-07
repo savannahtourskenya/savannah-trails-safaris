@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+       <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -93,7 +94,7 @@
       background: #d35400;
     }
 
-    /* Tours (filterable) */
+    /* Tours */
     .tours {
       padding: 40px 20px;
       background: #fff;
@@ -138,6 +139,24 @@
     .tour-card .content {
       padding: 15px;
       text-align: left;
+    }
+    .tour-card .price {
+      color: #7ac142;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .book-btn {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      margin-top: 8px;
+      display: inline-block;
+    }
+    .book-btn:hover {
+      background: #1ebd5a;
     }
 
     /* Blog */
@@ -240,62 +259,14 @@
 
   <!-- Destinations -->
   <section id="gallery" class="gallery">
-    <div class="gallery-item">
-      <img src="screenshoti_20250919-084909.jpg" alt="Amboseli">
-      <div class="overlay">
-        <p>Amboseli</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara">
-      <div class="overlay">
-        <p>Maasai Mara</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="samburumeru.jpg" alt="Samburu">
-      <div class="overlay">
-        <p>Samburu</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="diani.jpg" alt="Diani Beach">
-      <div class="overlay">
-        <p>Diani Beach</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="mountkenya.jpg" alt="Mt. Kenya">
-      <div class="overlay">
-        <p>Mt. Kenya</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="lakenakuru.jpg" alt="Lake Nakuru">
-      <div class="overlay">
-        <p>Lake Nakuru</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="maasaiculture.jpg" alt="Maasai Culture">
-      <div class="overlay">
-        <p>Maasai Culture</p>
-        <button>View Details</button>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="nairobii.jpg" alt="Nairobi">
-      <div class="overlay">
-        <p>Nairobi</p>
-        <button>View Details</button>
-      </div>
-    </div>
+    <div class="gallery-item"><img src="screenshoti_20250919-084909.jpg" alt="Amboseli"><div class="overlay"><p>Amboseli</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara"><div class="overlay"><p>Maasai Mara</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="samburumeru.jpg" alt="Samburu"><div class="overlay"><p>Samburu</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="diani.jpg" alt="Diani Beach"><div class="overlay"><p>Diani Beach</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="mountkenya.jpg" alt="Mt. Kenya"><div class="overlay"><p>Mt. Kenya</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="lakenakuru.jpg" alt="Lake Nakuru"><div class="overlay"><p>Lake Nakuru</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="maasaiculture.jpg" alt="Maasai Culture"><div class="overlay"><p>Maasai Culture</p><button>View Details</button></div></div>
+    <div class="gallery-item"><img src="nairobii.jpg" alt="Nairobi"><div class="overlay"><p>Nairobi</p><button>View Details</button></div></div>
   </section>
 
   <!-- Tours -->
@@ -306,28 +277,75 @@
       <button onclick="filterTours('short')">Short Safaris</button>
       <button onclick="filterTours('long')">Extended Tours</button>
     </div>
+
     <div class="tour-grid">
+
       <div class="tour-card short">
         <img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara">
         <div class="content">
           <h3>3-Day Maasai Mara Safari</h3>
           <p>Big Five, Maasai culture, scenic savannahs.</p>
+          <p><strong>Duration:</strong> 3 Days</p>
+          <p class="price">From $800.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
         </div>
       </div>
+
       <div class="tour-card long">
         <img src="screenshoti_20250919-084909.jpg" alt="Amboseli">
         <div class="content">
-          <h3>5-Day Amboseli & Tsavo Safari</h3>
-          <p>Mt. Kilimanjaro views, elephant herds, Tsavo wilderness.</p>
+          <h3>6-Day Maasai Mara, Lake Naivasha & Amboseli</h3>
+          <p>Explore wildlife across Kenya’s top parks.</p>
+          <p><strong>Duration:</strong> 6 Days</p>
+          <p class="price">From $2000.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
         </div>
       </div>
-      <div class="tour-card long">
-        <img src="mountkenya.jpg" alt="Kenya Explorer">
+
+      <div class="tour-card short">
+        <img src="mountkenya.jpg" alt="Mt. Kenya Adventure">
         <div class="content">
-          <h3>7-Day Kenya Explorer</h3>
-          <p>Includes Samburu, Mt. Kenya, Lake Nakuru & Maasai Mara.</p>
+          <h3>4-Day Mt. Kenya Adventure</h3>
+          <p>Experience Kenya’s highest mountain and forest beauty.</p>
+          <p><strong>Duration:</strong> 4 Days</p>
+          <p class="price">From $850.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
         </div>
       </div>
+
+      <div class="tour-card short">
+        <img src="lakenakuru.jpg" alt="Lake Nakuru National Park">
+        <div class="content">
+          <h3>Overnight in Lake Nakuru National Park</h3>
+          <p>Stunning pink flamingos and diverse wildlife.</p>
+          <p><strong>Duration:</strong> 1 Day</p>
+          <p class="price">From $500.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
+        </div>
+      </div>
+
+      <div class="tour-card short">
+        <img src="birdwatching.jpg" alt="Bird Watching">
+        <div class="content">
+          <h3>Bird Watching Safari in Kenya</h3>
+          <p>Perfect for bird lovers. Spot rare and colorful species.</p>
+          <p><strong>Duration:</strong> 1 Day</p>
+          <p class="price">From $300.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
+        </div>
+      </div>
+
+      <div class="tour-card short">
+        <img src="samburumeru.jpg" alt="Samburu">
+        <div class="content">
+          <h3>3-Day Samburu Safari</h3>
+          <p>Unique wildlife and cultural experience.</p>
+          <p><strong>Duration:</strong> 3 Days</p>
+          <p class="price">From $700.00</p>
+          <a href="https://wa.me/254794653405" class="book-btn" target="_blank">Book Now</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -361,7 +379,7 @@
     <p>© Savannah Trails Safaris | WhatsApp / Call: +254 794 653405</p>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
+  <!-- Floating WhatsApp -->
   <a href="https://wa.me/254794653405" class="whatsapp-float" target="_blank">💬</a>
 
   <script>
@@ -380,7 +398,7 @@
     }
   </script>
 </body>
-    </html>
-        
+</html>
+ 
   
 
