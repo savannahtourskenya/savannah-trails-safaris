@@ -1,376 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Kenya - Safari Adventures</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savannah Trails Safaris</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f7f7f7;
+      padding: 0;
+      background: linear-gradient(to bottom, #f9e4b7, #d8b07a, #c4a484);
+      color: #333;
     }
 
-    header {
-      background: #004d40;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-
+    /* Navigation */
     nav {
-      background: #00695c;
+      background: rgba(44, 62, 80, 0.9);
+      color: #fff;
       display: flex;
       justify-content: center;
-      padding: 10px 0;
+      gap: 25px;
+      padding: 15px 20px;
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
-
     nav a {
-      color: white;
+      color: #f8f8f8;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
     }
-
     nav a:hover {
-      text-decoration: underline;
+      color: #f4b350;
+      transform: scale(1.05);
     }
 
-    .hero {
-      background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60') no-repeat center center/cover;
-      color: white;
-      padding: 120px 20px;
+    /* Hero */
+    header {
+      background: url("screenshoti_20250919-090237.jpg") center/cover no-repeat;
+      color: #fff;
+      padding: 80px 20px;
       text-align: center;
+      box-shadow: inset 0 0 100px rgba(0,0,0,0.4);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+    header h2 {
+      margin: 10px 0;
+      font-weight: 400;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
     }
 
-    .hero h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 5px black;
-    }
-
-    .hero p {
-      font-size: 1.3em;
-      margin-bottom: 20px;
-    }
-
+    /* Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      background: white;
+      gap: 15px;
+      padding: 20px;
     }
-
-    .card {
-      background: #fafafa;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    .gallery-item {
+      position: relative;
       overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      padding: 15px;
       text-align: center;
-      transition: 0.3s;
+    }
+    .overlay button {
+      margin-top: 8px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #e67e22;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .overlay button:hover {
+      background: #d35400;
     }
 
-    .card:hover {
-      transform: scale(1.03);
+    /* Tours */
+    .tours {
+      padding: 40px 20px;
+      background: #fff;
+      text-align: center;
     }
-
-    .card img {
+    .tours h2 {
+      margin-bottom: 20px;
+    }
+    .filter-buttons {
+      margin-bottom: 20px;
+    }
+    .filter-buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #2c3e50;
+      color: #fff;
+      cursor: pointer;
+    }
+    .filter-buttons button.active,
+    .filter-buttons button:hover {
+      background: #34495e;
+    }
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .tour-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .tour-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
-
-    .card h3 {
-      color: #004d40;
-      margin: 15px 0 10px;
-    }
-
-    .card p {
-      color: #555;
-      padding: 0 10px 10px;
-    }
-
-    .card button {
-      background: #00796b;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
-
-    .card button:hover {
-      background: #004d40;
+    .tour-card .content {
+      padding: 15px;
+      text-align: left;
     }
 
     footer {
-      background: #004d40;
-      color: white;
+      background: #2c3e50;
+      color: #fff;
       text-align: center;
-      padding: 20px 10px;
+      padding: 15px;
+      margin-top: 20px;
     }
 
-    /* ===== MODAL STYLE ===== */
-    .modal {
-      display: none;
+    .whatsapp-float {
       position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      background: white;
-      margin: auto;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      position: relative;
-      animation: fadeIn 0.4s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .close {
-      color: #aaa;
-      position: absolute;
-      top: 15px;
+      bottom: 20px;
       right: 20px;
-      font-size: 25px;
-      cursor: pointer;
-    }
-
-    .close:hover {
-      color: #000;
-    }
-
-    .modal img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .modal h2 {
-      color: #004d40;
-    }
-
-    .book-btn {
-      background: #00796b;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      cursor: pointer;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
-    }
-
-    .book-btn:hover {
-      background: #004d40;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Explore Kenya Adventures</h1>
-</header>
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Destinations</a>
+    <a href="#tours">Tours</a>
+    <a href="#blog">Travel Guide</a>
+    <a href="#contact">Contact</a>
+    <a href="#map">Map</a>
+  </nav>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Destinations</a>
-  <a href="#">Tours</a>
-  <a href="#">Contact</a>
-</nav>
+  <!-- Hero -->
+  <header id="home">
+    <h1>Savannah Trails Safaris</h1>
+    <h2>Explore Kenya, Experience Life</h2>
+    <p>Discover Kenya’s breathtaking destinations with us.</p>
+  </header>
 
-<section class="hero">
-  <h1>Discover the Magic of Kenya</h1>
-  <p>From the Great Rift Valley to pristine beaches — adventure awaits you.</p>
-</section>
+  <!-- Destinations -->
+  <section id="gallery" class="gallery">
+    <div class="gallery-item">
+      <img src="screenshoti_20250919-084909.jpg" alt="Amboseli">
+      <div class="overlay">
+        <p>Amboseli</p>
+        <button onclick="openDetails('amboseli')">View Details</button>
+      </div>
+    </div>
 
-<section class="gallery">
-  <!-- Destination Cards -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1605648186663-9e0b6a1f8362?auto=format&fit=crop&w=800&q=60" alt="Amboseli">
-    <h3>Amboseli National Park</h3>
-    <p>See majestic elephants beneath Mt. Kilimanjaro’s shadow.</p>
-    <button onclick="openModal('amboseli')">View Details</button>
-  </div>
+    <div class="gallery-item">
+      <img src="screenshoti_20250919-090402.jpg" alt="Maasai Mara">
+      <div class="overlay">
+        <p>Maasai Mara</p>
+        <button onclick="openDetails('maasai')">View Details</button>
+      </div>
+    </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1575891201471-7f53e0d65d88?auto=format&fit=crop&w=800&q=60" alt="Maasai Mara">
-    <h3>Maasai Mara</h3>
-    <p>Witness the Great Migration — a breathtaking natural wonder.</p>
-    <button onclick="openModal('mara')">View Details</button>
-  </div>
+    <div class="gallery-item">
+      <img src="samburumeru.jpg" alt="Samburu">
+      <div class="overlay">
+        <p>Samburu</p>
+        <button onclick="openDetails('samburu')">View Details</button>
+      </div>
+    </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1616626620361-3a7ce748ccc4?auto=format&fit=crop&w=800&q=60" alt="Samburu">
-    <h3>Samburu Reserve</h3>
-    <p>Discover rare wildlife in Kenya’s northern wild beauty.</p>
-    <button onclick="openModal('samburu')">View Details</button>
-  </div>
+    <div class="gallery-item">
+      <img src="diani.jpg" alt="Diani Beach">
+      <div class="overlay">
+        <p>Diani Beach</p>
+        <button onclick="openDetails('diani')">View Details</button>
+      </div>
+    </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1621372050838-c2f8d5adadb8?auto=format&fit=crop&w=800&q=60" alt="Diani Beach">
-    <h3>Diani Beach</h3>
-    <p>Relax on Kenya’s soft white sands and turquoise waters.</p>
-    <button onclick="openModal('diani')">View Details</button>
-  </div>
+    <div class="gallery-item">
+      <img src="mountkenya.jpg" alt="Mt. Kenya">
+      <div class="overlay">
+        <p>Mt. Kenya</p>
+        <button onclick="openDetails('mtkenya')">View Details</button>
+      </div>
+    </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1570129476831-4af2a4eb7a12?auto=format&fit=crop&w=800&q=60" alt="Mt. Kenya">
-    <h3>Mount Kenya</h3>
-    <p>Conquer Africa’s second-highest peak with a guided trek.</p>
-    <button onclick="openModal('kenya')">View Details</button>
-  </div>
+    <div class="gallery-item">
+      <img src="lakenakuru.jpg" alt="Lake Nakuru">
+      <div class="overlay">
+        <p>Lake Nakuru</p>
+        <button onclick="openDetails('nakuru')">View Details</button>
+      </div>
+    </div>
+  </section>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1568746229159-9e5b0d44393b?auto=format&fit=crop&w=800&q=60" alt="Lake Nakuru">
-    <h3>Lake Nakuru</h3>
-    <p>Marvel at pink flamingos and stunning birdlife.</p>
-    <button onclick="openModal('nakuru')">View Details</button>
-  </div>
+  <!-- View Details Info -->
+  <script>
+    const destinations = {
+      amboseli: "Experience Amboseli’s majestic elephants with the backdrop of Mt. Kilimanjaro. Perfect for photographers and nature lovers alike.",
+      maasai: "Witness the Great Migration and meet the Maasai warriors in Kenya’s most iconic reserve — a true African dream.",
+      samburu: "Uncover the untamed beauty of Northern Kenya with rare wildlife and authentic Samburu culture.",
+      diani: "Relax at Diani Beach, Kenya’s most beautiful coastal paradise with turquoise waters and white sand.",
+      mtkenya: "Conquer Africa’s second highest mountain or enjoy scenic hikes through lush alpine forests.",
+      nakuru: "Marvel at flamingos and rhinos in this pink-hued lake paradise, a UNESCO heritage gem."
+    };
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1615461066841-fd52af20a260?auto=format&fit=crop&w=800&q=60" alt="Maasai Culture">
-    <h3>Maasai Culture</h3>
-    <p>Experience authentic Maasai traditions and hospitality.</p>
-    <button onclick="openModal('culture')">View Details</button>
-  </div>
+    function openDetails(place) {
+      const text = destinations[place];
+      const newWin = window.open("", "_blank");
+      newWin.document.write(`
+        <html><head><title>${place}</title>
+        <style>
+          body { font-family: Arial; padding: 40px; background: linear-gradient(to bottom, #fef6e4, #f9e0ae); color: #333; }
+          h1 { color: #c06014; }
+          p { font-size: 18px; line-height: 1.6; }
+          button { padding: 10px 15px; background: #c06014; border: none; color: #fff; border-radius: 5px; cursor: pointer; }
+          button:hover { background: #8c3c0b; }
+        </style></head><body>
+        <h1>${place.toUpperCase()}</h1>
+        <p>${text}</p>
+        <button onclick="window.close()">Close</button>
+        </body></html>
+      `);
+    }
+  </script>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=800&q=60" alt="Nairobi City">
-    <h3>Nairobi City</h3>
-    <p>Explore Kenya’s capital — the only city with a national park!</p>
-    <button onclick="openModal('nairobi')">View Details</button>
-  </div>
-</section>
+  <!-- Tours, Contact, Footer, etc. (same as your original) -->
 
-<!-- ===== MODALS ===== -->
-<div id="amboseli" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('amboseli')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1605648186663-9e0b6a1f8362?auto=format&fit=crop&w=800&q=60" alt="">
-    <h2>Amboseli National Park</h2>
-    <p>Witness herds of elephants roam beneath the towering Mt. Kilimanjaro. Amboseli offers stunning photo scenes, rich culture, and breathtaking sunsets.</p>
-    <p><strong>Duration:</strong> 3 Days | <strong>Price:</strong> From $250</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Amboseli%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="mara" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('mara')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1575891201471-7f53e0d65d88?auto=format&fit=crop&w=800&q=60">
-    <h2>Maasai Mara</h2>
-    <p>Join the iconic safari destination famous for the Big Five and the Great Migration — one of nature’s greatest spectacles.</p>
-    <p><strong>Duration:</strong> 4 Days | <strong>Price:</strong> From $350</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Maasai%20Mara%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="samburu" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('samburu')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1616626620361-3a7ce748ccc4?auto=format&fit=crop&w=800&q=60">
-    <h2>Samburu Reserve</h2>
-    <p>Home to unique species like the reticulated giraffe and Grevy’s zebra. A peaceful retreat for nature lovers.</p>
-    <p><strong>Duration:</strong> 3 Days | <strong>Price:</strong> From $280</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Samburu%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="diani" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('diani')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1621372050838-c2f8d5adadb8?auto=format&fit=crop&w=800&q=60">
-    <h2>Diani Beach</h2>
-    <p>Perfect getaway with soft white sand, blue waves, and beach resorts. Ideal for relaxation and water adventures.</p>
-    <p><strong>Duration:</strong> 2 Days | <strong>Price:</strong> From $180</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Diani%20Beach%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="kenya" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('kenya')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1570129476831-4af2a4eb7a12?auto=format&fit=crop&w=800&q=60">
-    <h2>Mount Kenya</h2>
-    <p>Challenge yourself with an unforgettable trek to the peaks of Mount Kenya, surrounded by alpine beauty.</p>
-    <p><strong>Duration:</strong> 5 Days | <strong>Price:</strong> From $420</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Mount%20Kenya%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="nakuru" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('nakuru')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1568746229159-9e5b0d44393b?auto=format&fit=crop&w=800&q=60">
-    <h2>Lake Nakuru</h2>
-    <p>Home of flamingos and rhinos — an unforgettable safari close to Nairobi.</p>
-    <p><strong>Duration:</strong> 2 Days | <strong>Price:</strong> From $200</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Lake%20Nakuru%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="culture" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('culture')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1615461066841-fd52af20a260?auto=format&fit=crop&w=800&q=60">
-    <h2>Maasai Culture</h2>
-    <p>Meet the proud Maasai warriors, learn traditional dances, and enjoy authentic village tours.</p>
-    <p><strong>Duration:</strong> 1 Day | <strong>Price:</strong> From $120</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Maasai%20Culture%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<div id="nairobi" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('nairobi')">&times;</span>
-    <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=800&q=60">
-    <h2>Nairobi City</h2>
-    <p>Discover vibrant nightlife, museums, and wildlife all within Kenya’s capital city.</p>
-    <p><strong>Duration:</strong> 1 Day | <strong>Price:</strong> From $100</p>
-    <a href="https://wa.me/254704641962?text=I%20want%20to%20book%20Nairobi%20City%20tour" class="book-btn" target="_blank">Book on WhatsApp</a>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 Explore Kenya Adventures | Designed by Benson Murithi</p>
-</footer>
-
-<script>
-  function openModal(id) {
-    document.getElementById(id).style.display = 'block';
-  }
-
-  function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
-  }
-
-  window.onclick = function(event) {
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-      if (event.target == modal) modal.style.display = 'none';
-    });
-  };
-</script>
+  <a href="https://wa.me/254794653405" class="whatsapp-float" target="_blank">💬</a>
 
 </body>
-       </html>
+  </html>
+
                                                                                       
   
 
